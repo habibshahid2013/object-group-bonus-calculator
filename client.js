@@ -29,7 +29,43 @@ const employees = [
     annualSalary: '35000',
     reviewRating: 1
   }
-];
+];function employeeBonuses(object){
+  let bonusResults = bonusCalulation(object)
+  return {name: object.name, 
+  bonusPecentages: bonusResults,
+  totalCompensation: (bonusResults * object.annualSalary) + object.anualSalary,
+  totalBonus: bonusResults * object.annualSalary}
+}
+function bonusCalulation(object){
+  let bonus = 0
+  if (object.reviewRating <= 2){
+    return bonus;
+  }
+  else if ( object.reviewRating === 3){
+    bonus += .04;
+  }
+  else if (object.reviewRating === 4){
+    bonus += .06;
+  }
+  else if ( object.reviewRating === 5){
+    bonus += .10;
+  }
+  if ( object.employeeNumber.length === 4){
+    bonus += .05;}
+  if (object.annualSalary > 65000) {
+    bonus -= .01 ;
+  }
+  //if bonus is greater than or equal  13 percent than bonus equal 
+  if ( bonus > .13 ){
+    bonus = .13
+  }
+  if (bonus < 0){
+    bonus = 0
+  }
+  return bonus;
+}
+
+
 
 // YOU SHOULD NOT NEED TO CHANGE ANYTHING ABOVE THIS POINT
 
